@@ -16,5 +16,16 @@ describe("QA Engineer Code Challenge Assignment..", () => {
       cy.get("ol").find("li").first().click(); //Redirect user to homepage
       cy.url().should("contain", "en-us"); //expected to include en-us
     });
+
+    it("Redirect user to pricing page after clicking `Buy` button", () => {
+      cy.get(".lc-font__regular").click(); //Redirect to pricing page
+  
+      cy.get(".pass-product-comparison--button") 
+        .first()
+        .find("a")
+        .should("have.text", "Buy Now") //anchor tag should include 'Buy Now' text
+        .click(); //Click on 'Buy Now' button
+      cy.wait(2000);
+    });
    
   });
