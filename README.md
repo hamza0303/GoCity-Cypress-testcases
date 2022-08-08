@@ -16,6 +16,6 @@ npx cypress open
 npx cypress open 
 
 ## important-Note
-if you have an updated version of cypress please follow the below steps
+if you have the latest version of cypress please follow the below steps
 * npm uninstall cypress
 * npm intall cypress@9.5.0
