@@ -27,5 +27,18 @@ describe("QA Engineer Code Challenge Assignment..", () => {
         .click(); //Click on 'Buy Now' button
       cy.wait(2000);
     });
+
+    it("Select one day pass", () => {
+      cy.get("div")
+        .find(".lc-products-list__item")
+        .find("div")
+        .contains("1 day pass");   
+      cy.contains("Select").click({ force: true }); //Click on '1 day pass' cart option
+  
+      cy.get(".lc-cart__item-function-pass").then((selected_pass) => {
+        const selected_pass_text = selected_pass.text();
+        expect(selected_pass_text).to.equal("1 day pass"); //expected 1 day pass to equal 1 day pass on page
+      });
+    });
    
   });
