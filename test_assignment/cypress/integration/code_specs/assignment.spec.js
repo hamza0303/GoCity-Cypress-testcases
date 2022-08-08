@@ -11,7 +11,10 @@ describe("QA Engineer Code Challenge Assignment..", () => {
       cy.visit("https://gocity.com/boston/en-us/products/all-inclusive");
       cy.url({ timeout: 2000 }).should("include", "/all-inclusive"); //expected to include /all-inclusive
     });
-  
+
+    it("Redirecting user to home page when selecting home link", () => {
+      cy.get("ol").find("li").first().click(); //Redirect user to homepage
+      cy.url().should("contain", "en-us"); //expected to include en-us
+    });
    
   });
-  
