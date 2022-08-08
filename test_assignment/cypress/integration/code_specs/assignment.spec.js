@@ -51,4 +51,9 @@ describe("QA Engineer Code Challenge Assignment..", () => {
       cy.get("a").contains("Checkout").click({ force: true }); //fire the event at the checkout button.
       cy.wait(2000);
     });
+
+    it("Navigates to Home page from checkout page", () => {
+      cy.get("a.logo.navbar-btn.pull-left").click();
+      cy.url().should("contain", "en-us"); //expected to inlcude /en-us
+    });
   });
