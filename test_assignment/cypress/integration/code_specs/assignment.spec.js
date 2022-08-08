@@ -1,5 +1,5 @@
 describe("QA Engineer Code Challenge Assignment..", () => {
-    beforeEach(function () {
+    beforeEach(function () {  
       cy.viewport(1500, 1000);
       Cypress.on("uncaught:exception", (err, runnable) => {
         //prevent Cypress from failing the test
@@ -73,5 +73,29 @@ describe("QA Engineer Code Challenge Assignment..", () => {
         const message = page_links.text();
         expect(page_links, message).to.not.have.attr("href", "#undefined"); //expected not to have attribute href with the value of #undefined
       });
+    });
+
+    it("Tests you can add an `Explorer` pass to the cart", () => {
+      cy.get('[data-testid="attraction-aggregator-list-item-button"]', {
+        timeout: 2000,
+      })
+        .first()
+        .click({ force: true });
+  
+      cy.get("a").invoke("removeAttr", "target").contains("See details").click();  //Remove the target attribute from the DOM
+      cy.wait(2000); 
+  
+      cy.get("a").contains("Buy a pass").click();     //Get the DOM element containing the text Buy a pass
+  
+      cy.get("div").find(".lc-products-list__item").find("div");  //Get the child element
+      cy.contains("Select").first().click({ force: true });       //Get the first DOM element 
+  
+      cy.wait(2000);
+      cy.get('[data-testid="sidecart-checkout-link"]').click();   
+  
+      cy.get('[href="/boston/en-us"]').click();
+      cy.url().should("contain", "en-us");                       //expected to inlcude /en-us
+  
+      cy.get(".cart-icon__icon-counter").should("contain", 1);   //Expected cart icon should contain 1 counter
     });
   });
