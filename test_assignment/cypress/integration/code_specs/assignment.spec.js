@@ -64,4 +64,14 @@ describe("QA Engineer Code Challenge Assignment..", () => {
       cy.url().should("contain", "/products/explorer"); //expected to include /products/explorer
       cy.wait(2500);
     });
+    
+    it("Tests all the `Explorer` page links", () => {
+      cy.scrollTo("bottom"); //Scroll to the bottom of the window
+      cy.get(".read-more-button > .lc-font__regular").click();
+  
+      cy.get("a").each((page_links) => {
+        const message = page_links.text();
+        expect(page_links, message).to.not.have.attr("href", "#undefined"); //expected not to have attribute href with the value of #undefined
+      });
+    });
   });
