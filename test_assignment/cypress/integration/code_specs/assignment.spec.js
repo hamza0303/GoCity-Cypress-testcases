@@ -56,4 +56,12 @@ describe("QA Engineer Code Challenge Assignment..", () => {
       cy.get("a.logo.navbar-btn.pull-left").click();
       cy.url().should("contain", "en-us"); //expected to inlcude /en-us
     });
+    
+    it("Navigates to `Explorer` page", () => {
+      cy.get('[data-testid="menu-main-pass_product-exp"]', {
+        timeout: 2000,
+      }).click();
+      cy.url().should("contain", "/products/explorer"); //expected to include /products/explorer
+      cy.wait(2500);
+    });
   });
