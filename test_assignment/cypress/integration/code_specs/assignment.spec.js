@@ -98,4 +98,11 @@ describe("QA Engineer Code Challenge Assignment..", () => {
   
       cy.get(".cart-icon__icon-counter").should("contain", 1);   //Expected cart icon should contain 1 counter
     });
+
+    it("Tests that you can remove an `Explorer` pass from the cart", () => {
+      cy.get(".cart-icon__icon").click();        
+  
+      cy.get(".lc-cart__item-delete").contains("Delete").first().click();   //Delete the item from the cart
+      cy.get(".lc-font__regular").contains("Buy").should("be.visible");    //Expected to include Buy button 
+    });
   });
