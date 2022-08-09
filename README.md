@@ -13,9 +13,9 @@ npm install
 npx cypress open 
 
 ## run cypress in headless mode 
-npx cypress open 
+npx cypress run 
 
 ## important-Note
-if you have the latest version of cypress please follow the below steps
+if you have the latest version of cypress please follow these steps first before running the project
 * npm uninstall cypress
 * npm install cypress@9.5.0
